@@ -1,18 +1,15 @@
-precio_venta=ARGV[0].to_i
-user=ARGV[1].to_i
-gatos=ARGV[2].to_i
+precio=ARGV[0].to_i
+usuario=ARGV[1].to_i
+premium=ARGV[2].to_i
+gratuitos=ARGV[3].to_i
+gastos=ARGV[4].to_i
 
-# Imprime los valores
-puts precio_venta
-puts user
-puts gatos
+utilidades = (precio * usuario) + ((precio*2) * premium) + ((precio*0) * gratuitos) - gastos
+utilidades.to_i
 
-
-if user == 1
-   total = gatos * 2
-   puts "Eres un Usuario premium debe de pagar #{total}$"
-elsif  user == 0
-   puts "Eres usuario Free debe de pagar #{gatos}$"
+if utilidades > 0
+    impuestos= (utilidades * 35) / 100
+    puts "Los impuestos imponible son #{impuestos}"
 else
-   puts "EL usuario ingresado no existe"
+    puts "Los impuestos imponible son #{utilidades}"
 end
